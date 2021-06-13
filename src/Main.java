@@ -2,10 +2,8 @@
 import Communication.MulticastReceiver;
 import Communication.MulticastPublisher;
 import Communication.ReceiveThread;
-import Communication.SendThread;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.SocketException;
 
 public class Main{

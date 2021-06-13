@@ -1,7 +1,9 @@
-package FakeDataGenerator;
+package Communication;
 
 import DataStore.DataStore;
+import FakeDataGenerator.SendThread;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -10,7 +12,7 @@ public class DataGenerator implements Runnable{
 	private Queue<Integer> Q=new LinkedList<>();
 	private static DataStore dataStore = DataStore.creatInstance();
 	private Random rnd = new Random();
-	//private SendThread sendThread =new SendThread();//will be solved soon.
+	private SendThread sendThread=new SendThread();
 
 
 	private int generateData()
@@ -26,11 +28,11 @@ public class DataGenerator implements Runnable{
 			data = this.generateData();
 			System.out.println(data);
 			Q.add(data);
-			//try {
-			//	sendThread.sendMesg(data);        //send for all
-			//} catch (IOException e) {
-			//	e.printStackTrace();
-			//}
+			try {
+				sendThread.sendMesg();        //send for all
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 			if(Q.size()>=500)
 				dataStore.saveAll(Q);

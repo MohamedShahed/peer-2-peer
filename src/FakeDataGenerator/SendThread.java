@@ -1,4 +1,4 @@
-package Communication;
+package FakeDataGenerator;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,13 +14,14 @@ public class SendThread implements Runnable{
         this.fakeNumber = fakeNumber;
         this.sendAdress = sendAdress;
     }
+    public SendThread(){}
 
     public Socket getSocket(){return s;}
 
     /*
-     * send the genetated data to another peer
+     * send the generated data to another peer
      * */
-    private void sendMesg()throws IOException
+    public  void sendMesg()throws IOException
     {
 
         int port = 2000;
